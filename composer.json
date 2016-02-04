@@ -1,0 +1,16 @@
+{
+    "name": "coderithm/collections",
+    "description": "coderithm php collections library",
+    "keywords": ["coderithm", "collection", "library", "data structures", "array", "queue", "stack", "map", "set"],
+    "homepage": "https://github.com/coderithm/",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "coderithm\\collections\\" : "src"
+        }
+    }
+}
