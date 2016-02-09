@@ -2,68 +2,72 @@
 
 namespace coderithm\collections;
 
-class BaseCollection extends \ArrayObject implements CollectionInterface
+use ArrayObject;
+use Exception;
+use InvalidArgumentException;
+use Traversable;
+
+abstract class BaseCollection extends ArrayObject implements CollectionInterface
 {
-    abstract protected function isIndexed();
+    abstract public function isIndexed();
 
     public function __construct($elements = [])
     {
-        if($elements instanceof CollectionInterface){
-            $this->addAll($elements);
+        if(!is_array($elements) && !($elements instanceof Traversable)) {
+            throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
         }
-        elseif(is_array($elements)){
-            $this->addEach($elements);
-        }
-        else{
-            throw new \InvalidArgumentException('Object of type '.get_class().' can only be created on arrays, ArrayObject, BaseCollection or CollectionInterface');
-        }
+
+        $this->addAll($elements);
     }
 
     public function add($element, $index = null)
     {
         if(static::isIndexed() && isset($index))
         {
-            if($this->get($index) === $element) return false;
+            if($this->getIndex($index) === $element) {
+                return false;
+            }
 
             $this->offsetSet($index, $element);
         }
-        else{
+        else {
             $this->append($element);
         }
 
         return true;
     }
 
-    public function addEach(array $array)
+    public function addAll($elements)
     {
         $changed = false;
-        
-        foreach ($array as $key => $element)
+
+        if(!is_array($elements) && !($elements instanceof Traversable)) {
+            throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
+        }
+
+        foreach($elements as $key => $element)
         {
-            if($this->add($element, $key)) $changed = true;
+            if($this->add($element, $key)) {
+                $changed = true;
+            }
         }
 
         return $changed;
     }
 
-    public function addAll(CollectionInterface $collection)
-    {
-        return $this->addEach($collection->toArray());
-    }
-
     public function clear()
     {
-        foreach ($this->toArray() as $key => $element)
+        foreach($this->toArray() as $key => $element)
         {
             $this->offsetUnset($key);
         }
     }
 
-    public function contains($element)
+    public function contains($element, $strict = false)
     {
-        foreach ($this as $value)
+        foreach($this as $value)
         {
-            if(serialize($element) === serialize($value)){
+            if(json_encode($element) == json_encode($value) && (!$strict || $element == $value)) {
                 return true;
             }
         }
@@ -71,16 +75,15 @@ class BaseCollection extends \ArrayObject implements CollectionInterface
         return false;
     }
 
-    public function containsAll(CollectionInterface $collection)
+    public function containsAll($elements)
     {
-        return $this->containsEach($collection->toArray());
-    }
+        if(!is_array($elements) && !($elements instanceof Traversable)) {
+            throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
+        }
 
-    public function containsEach(array $array)
-    {
-        foreach ($array as $value)
+        foreach($elements as $element)
         {
-            if(!$this->contains($value)){
+            if(!$this->contains($element)) {
                 return false;
             }
         }
@@ -106,37 +109,25 @@ class BaseCollection extends \ArrayObject implements CollectionInterface
         }
     }
 
-    public function equals($object)
-    {
-        if(is_array($object)){
-            return $this->toArray() === $object;
-        }
-        elseif($object instanceof CollectionInterface){
-            return $this->toArray() === $object->toArray();
-        }
-
-        return false;
-    }
-
-    public function get($index, $defaultValue = null)
+    public function getIndex($index, $defaultValue = null)
     {
         if ($index instanceof \Closure) {
             return $index($this, $defaultValue);
         }
-        elseif($this->offsetExists($index)){
+        elseif($this->offsetExists($index)) {
             return $this->offsetGet($index);
         }
-        else{
+        else {
             return $defaultValue;
         }
     }
 
     public function indexOf($element, $last = false)
     {
-        if(!$last){
+        if(!$last) {
             return array_search($element, $this->toArray());
         }
-        else{
+        else {
             return array_search($element, array_reverse($this->toArray(), true));
         }
     }
@@ -146,99 +137,54 @@ class BaseCollection extends \ArrayObject implements CollectionInterface
         return $this->count() === 0;
     }
 
-    public function remove($element)
+    public function removeIndex($index, $caseSensitive = true)
     {
-        if(($index = $this->indexOf($element)) !== false){
-            return $this->removeIndex($index);
-        }
-
-        return false;
-    }
-
-    public function removeAll(CollectionInterface  $collection)
-    {
-        return $this->removeEach($collection->toArray());
-    }
-
-    public function removeEach(array $array)
-    {
-        $changed = false;
-
-        foreach ($array as $element)
-        {
-            if($this->remove($element)){
-                $changed = true;
-            }
-        }
-
-        return $changed;
-    }
-
-    protected function removeIndex($index)
-    {
-        if($this->containsIndex($index))
-        {
+        if($this->contains($index, $caseSensitive)) {
             $this->offsetUnset($index);
-
             return true;
         }
 
         return false;
     }
 
-    public function retainAll(CollectionInterface $collection)
+    public function remove($element, $last = false)
     {
-        return $this->retainEach($collection->toArray());
-    }
-
-    public function retainEach(array $array)
-    {
-        $changed = false;
-
-        foreach ($array() as $element)
-        {
-            if(!$collection->contains($element))
-            {
-                $this->remove($element);
-                $changed = true;
-            }
+        if(($index = $this->indexOf($element, $last)) !== false) {
+            $this->offsetUnset($index);
+            return true;
         }
 
-        return $changed;
+        return false;
     }
 
-    public function set($index, $element)
+    public function removeAll($elements)
     {
-        $value = $this->get($index);
+        if(!is_array($elements) && !($elements instanceof Traversable)) {
+            throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
+        }
 
-        $this->offsetSet($index, $element);
+        foreach($elements as $element)
+        {
+            $this->remove($element);
+        }
+    }
 
-        return $value;
+    public function retainAll($elements)
+    {
+        if(!is_array($elements) && !($elements instanceof Traversable)) {
+            throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
+        }
+
+        foreach($elements as $element)
+        {
+            if(!$this->contains($element)) {
+                $this->remove($element);
+            }
+        }
     }
 
     public function toArray()
     {
         return $this->getArrayCopy();
     }
-
-    public function toSerializedArray()
-    {
-        $array = array();
-
-        foreach ($this->toArray() as $key => $value)
-        {
-            $array[$key] = serialize($value);
-        }
-
-        return $array;
-    }
-
-    public function __tostring()
-    {
-        $string = @get_class($this) . "[" . $this->size() . "] { ";
-        $string .= implode(', ', $this->toArray());
-        $string .= " }";
-        return $string;
-    }
-
 }

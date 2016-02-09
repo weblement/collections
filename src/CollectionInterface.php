@@ -2,78 +2,70 @@
 
 /**
  * PHP Collection Library
- * @author      Yuvrajsingh Joodhisty
+ * @author      Yuv Joodhisty <locustv@gmail.com>
+ * @copyright   Copyright © Coderithm 2016
+ * @license     https://github.com/coderithm/collections/blob/master/LICENSE.md
  * @version     v1.0
- * @copyright   2013 Locustv2
- * #email       Locustv@gmail.com
- * --------------------------------------
- * A Collection represents a group of objects known as its elements.
- * 
  */
 
 namespace coderithm\collections;
 
+/**
+ * A Collection represents a group of objects known as its elements.
+ */
+
 interface CollectionInterface
 {
+    public function isIndexed();
+
     /**
-     * Adds $element to the invoking collection.
-     * Returns true if element was added to the collection.
-     * Returns false if element is already a member of the collection,
+     * Adds an element to the invoking collection.
+     * @param   object $element the element to be added to the collection
+     * @param   mixed $index (optional) the index at which the element will be located in the collection
+     * @return  boolean true if element was added to the collection.
+     * false if element is already a member of the collection,
      * or if the collection does not allow duplicates
-     * @param   Object $element, Object $index = null (optional)
-     * @return  boolean
      */
     public function add($element, $index = null);
 
     /**
-     * Adds all the elements of $collection to the invoking collection.
-     * Returns true if the operation succeeded (i.e., the elements were added).
-     * Otherwise returns false
-     * @param   Collection $collection
-     * @return  boolean
+     * Adds all the elements of a collection or array to the invoking collection.
+     * @param   array|CollectionInterface $collection the collection whose elements shall be added
+     * @return  boolean true if the operation succeeded (i.e., the elements were added) otherwise returns false
+     * @throws  InvalidArgumentException if `$collection` is is neither traversable nor an array.
      */
-    public function addAll(CollectionInterface $collection);
+    public function addAll($collection);
 
     /**
-     * Removes all elements from the invoking collection.
+     * Removes all elements from the collection.
      * @return  void
      */
     public function clear();
 
     /**
-     * Returns true if $element is an element of the invoking collection. Otherwise, returns false.
-     * @param   Object $element
-     * @return  boolean
+     * Checks if an element is present in the collection
+     * @param   object $element the element to check
+     * @return  boolean whether the collection contain the element
     */
     public function contains($element);
 
     /**
-     * Returns true if the invoking collection contains all elements of $collection. Otherwise, returns false.
-     * @param   Collection $collection
-     * @return  boolean
+     * Checks if the collection contains all elements from another collection
+     * @param   Collection $collection the collection to check against
+     * @return  boolean whether the collection contain the elements
     */
-    public function containsAll(CollectionInterface $collection);
+    public function containsAll($collection);
 
     /**
-     * Compares the specified $collection with this Collection for equality.
-     * Both the collection should be from same initiating class
-     * Returns true if similar, otherwise returns false.
-     * @param   Collection $collection
-     * @return  boolean
-     */
-    public function equals($object);
-
-    /**
-     * Returns true if the invoking collection is empty. Otherwise, returns false.
-     * @return  boolean
+     * Check if the collection contains elements or is empty.
+     * @return  boolean whether the collection is empty
      */
     public function isEmpty();
 
     /**
-     * Removes one instance of $element from the invoking collection.
-     * Returns true if the element was removed. Otherwise, returns false.
+     * Removes the first occurence of the element from the invoking collection.
      * @param   Object $element
-     * @return  boolean
+     * @return  boolean whether the element was removed from the collections
      */
     public function remove($element);
 
@@ -83,7 +75,7 @@ interface CollectionInterface
      * @param   Collection $collection
      * @return  boolean
      */
-    public function removeAll(CollectionInterface  $collection);
+    public function removeAll($collection);
 
     /**
      * Removes all elements from the invoking collection except those in $collection.
@@ -91,7 +83,7 @@ interface CollectionInterface
      * @param   Collection $collection
      * @return  boolean
      */
-    public function retainAll(CollectionInterface $collection);
+    public function retainAll($collection);
 
     /**
      * Returns the number of elements held in the invoking collection.
