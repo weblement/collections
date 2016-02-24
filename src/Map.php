@@ -1,6 +1,6 @@
 <?php
 
-namespace coderithm\collections;
+namespace weblement\collections;
 
 class Map extends CollectionArray
 {

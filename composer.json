@@ -1,8 +1,8 @@
 {
-    "name": "coderithm/collections",
+    "name": "weblement/collections",
     "description": "A small PHP collections library that contain powerful data structures which makes manipulation of arrays easier.",
-    "keywords": ["coderithm", "collection", "library", "data structures", "array", "queue", "stack", "map", "set"],
-    "homepage": "https://github.com/coderithm/",
+    "keywords": ["weblement", "collection", "library", "data structures", "array", "queue", "stack", "map", "set"],
+    "homepage": "https://github.com/weblement/",
     "type": "library",
     "license": "BSD-3-Clause",
     "authors": [
@@ -12,15 +12,15 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/coderithm/collections/issues?state=open",
-        "source": "https://github.com/coderithm/collections"
+        "issues": "https://github.com/weblement/collections/issues?state=open",
+        "source": "https://github.com/weblement/collections"
     },
     "require": {
         "php": ">=5.4.0"
     },
     "autoload" : {
         "psr-4" : {
-            "coderithm\\collections\\" : "src"
+            "weblement\\collections\\" : "src"
         }
     }
 }

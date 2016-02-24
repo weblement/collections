@@ -1,43 +1,41 @@
 <?php
 
-namespace coderithm\collections;
+namespace weblement\collections;
 
-class Stack extends CollectionArray
+class Stack extends CollectionObject
 {
-	public function __construct($array = null)
-	{
-		parent::__construct($array);
-	}
+    public function isIndexed()
+    {
+        return false;
+    }
 
-	public function add($elementKey, $elementValue = null)
-	{
-		parent::add($elementKey);
-	}
+    public function peek()
+    {
+        return $this->getIndex($this->count() - 1);
+    }
 
-	public function peek()
-	{
-		return parent::size() != 0
-			? $this[parent::size()-1]
-			: null;
-	}
+    public function pop()
+    {
+        if(is_null($value = $this->peek())) {
+            return null;
+        }
 
-	public function pop()
-	{
-		return $this->peek()
-			? !parent::remove($peek = $this->peek())
-				?: $peek
-			: null;
-	}
+        $this->remove($value, true);
+        $arr = $this->toArray();
+        $this->clear();
+        $this->addAll($arr);
+        unset($arr);
 
-	public function pos($element)
-	{
-		return parent::contains($element) 
-			? @array_search($element, @array_reverse($this->toArray(), false), true) + 1
-			: false;
-	}
+        return $value;
+    }
 
-	public function push($element)
-	{
-		return $this->add($element);
-	}
+    public function pos($element)
+    {
+        return ($index = $this->indexOf($element)) ? $index + 1 : $index;
+    }
+
+    public function push($element)
+    {
+        return $this->add($element);
+    }
 }

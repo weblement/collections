@@ -1,13 +1,13 @@
 <?php
 
-namespace coderithm\collections;
+namespace weblement\collections;
 
 use ArrayObject;
-use Exception;
 use InvalidArgumentException;
 use Traversable;
+use Closure;
 
-abstract class BaseCollection extends ArrayObject implements CollectionInterface
+abstract class BaseCollection extends ArrayObject implements Collection
 {
     abstract public function isIndexed();
 
@@ -22,45 +22,29 @@ abstract class BaseCollection extends ArrayObject implements CollectionInterface
 
     public function add($element, $index = null)
     {
-        if(static::isIndexed() && isset($index))
-        {
-            if($this->getIndex($index) === $element) {
-                return false;
-            }
-
+        if(static::isIndexed() && isset($index)) {
             $this->offsetSet($index, $element);
         }
         else {
             $this->append($element);
         }
-
-        return true;
     }
 
     public function addAll($elements)
     {
-        $changed = false;
-
         if(!is_array($elements) && !($elements instanceof Traversable)) {
             throw new InvalidArgumentException('Argument $elements must be an array or implement Traversable.');
         }
 
         foreach($elements as $key => $element)
         {
-            if($this->add($element, $key)) {
-                $changed = true;
-            }
+            $this->add($element, $key);
         }
-
-        return $changed;
     }
 
     public function clear()
     {
-        foreach($this->toArray() as $key => $element)
-        {
-            $this->offsetUnset($key);
-        }
+        $this->exchangeArray([]);
     }
 
     public function contains($element, $strict = false)
@@ -111,7 +95,7 @@ abstract class BaseCollection extends ArrayObject implements CollectionInterface
 
     public function getIndex($index, $defaultValue = null)
     {
-        if ($index instanceof \Closure) {
+        if ($index instanceof Closure) {
             return $index($this, $defaultValue);
         }
         elseif($this->offsetExists($index)) {
@@ -122,14 +106,16 @@ abstract class BaseCollection extends ArrayObject implements CollectionInterface
         }
     }
 
-    public function indexOf($element, $last = false)
+    public function indexOf($element, $last = false, $defaultValue = null)
     {
         if(!$last) {
-            return array_search($element, $this->toArray());
+            $index = array_search($element, $this->toArray());
         }
         else {
-            return array_search($element, array_reverse($this->toArray(), true));
+            $index = array_search($element, array_reverse($this->toArray(), true));
         }
+
+        return $index === false ? $defaultValue : $index;
     }
 
     public function isEmpty()
@@ -139,22 +125,16 @@ abstract class BaseCollection extends ArrayObject implements CollectionInterface
 
     public function removeIndex($index, $caseSensitive = true)
     {
-        if($this->contains($index, $caseSensitive)) {
+        if($this->containsIndex($index, $caseSensitive)) {
             $this->offsetUnset($index);
-            return true;
         }
-
-        return false;
     }
 
     public function remove($element, $last = false)
     {
         if(($index = $this->indexOf($element, $last)) !== false) {
             $this->offsetUnset($index);
-            return true;
         }
-
-        return false;
     }
 
     public function removeAll($elements)
@@ -186,5 +166,11 @@ abstract class BaseCollection extends ArrayObject implements CollectionInterface
     public function toArray()
     {
         return $this->getArrayCopy();
+    }
+
+    public function __debugInfo() {
+        return [
+            'propSquared' => $this->toArray(),
+        ];
     }
 }

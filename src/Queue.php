@@ -1,34 +1,37 @@
 <?php
 
-namespace coderithm\collections;
+namespace weblement\collections;
 
-class Queue extends BaseCollection
+class Queue extends CollectionObject
 {
-    protected function isIndexed()
+    public function isIndexed()
     {
-        return true;
+        return false;
     }
 
     public function peek()
     {
-        return parent::size() != 0
-            ? $this[0]
-            : null;
+        return $this->getIndex(0);
     }
 
     public function pop()
     {
-        return $this->peek()
-            ? !parent::remove($peek = $this->peek())
-                ?: $peek
-            : null;
+        if(is_null($value = $this->peek())) {
+            return null;
+        }
+
+        $this->remove($value);
+        $arr = $this->toArray();
+        $this->clear();
+        $this->addAll($arr);
+        unset($arr);
+
+        return $value;
     }
 
     public function pos($element)
     {
-        return parent::contains($element) 
-            ? @array_search($element, @array_values($this->toArray()), true) + 1
-            : false;
+        return ($index = $this->indexOf($element)) ? $index + 1 : $index;
     }
 
     public function push($element)
