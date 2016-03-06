@@ -21,125 +21,60 @@ interface Collection extends IteratorAggregate, Countable
 {
     /**
      * Describes if the collection is indexed or not
+     * Child classes should override this method if the elements should be indexed.
      * @return boolean whether the collection is indexed or not
      */
-    /*public function isIndexed();*/
-
-
-    /**
-     * Adds an element to the invoking collection.
-     * @param   object $element the element to be added to the collection
-     * @param   mixed $index (optional) the index at which the element will be located in the collection
-     * @return  void
-     */
-    /*public function add($element, $index = null);*/
-
+    public function getIsIndexed();
 
     /**
-     * Adds all the elements of a collection or array to the invoking collection.
-     * @param   object $elements the elements to be added
+     * Add elements to the collection.
+     * @param   mixed $elements the elements to be added to the collection
      * @return  void
-     * @throws  InvalidArgumentException if `$collection` is is neither traversable nor an array.
      */
-    /*public function addAll($elements);*/
+    public function add($element);
 
+    /**
+     * Checks if an element is present in the collection
+     * @param   mixed $elements the elements that needs to be checked in the collection
+     * @param   boolean $strict if the check should be strict (e.g. case sensitive) or not
+     * @return  boolean whether the collection contain the element
+     */
+    public function contains($element, $strict = false);
+
+    /**
+     * Removes the first occurence of the element from the invoking collection.
+     * @param   mixed $elements
+     * @return  void
+     */
+    public function remove($elements);
 
     /**
      * Removes all elements from the collection.
      * @return  void
      */
-    /*public function clear();*/
-
-
-    /**
-     * Checks if an element is present in the collection
-     * @param   object $element the element to check
-     * @param   boolean $strict whether to do strict comparison to check for the element
-     * @return  boolean whether the collection contain the element
-    */
-    /*public function contains($element, $strict = false);*/
-
+    public function clear();
 
     /**
-     * Checks if the collection contains all elements from another collection
-     * @param   object $elements the collection to check against
-     * @return  boolean whether the collection contain the elements
-    */
-    /*public function containsAll($elements);*/
-
-
-    /**
-     * Checks if the collection contains an index. `isIndexed()` should return true;
-     * @param   mixed $index the index (key) to look for
-     * @param   boolean $caseSensitive whether the comparison should be case sensitive.
-     * @return  boolean whether the collection contain the specified index
-    */
-    /*public function containsIndex($index, $caseSensitive = true);*/
-
-
-    /**
-     * Retrieves the value at a specified index.
-     * @param  mixed $index the index to look for
-     * @param  boolean $defaultValue the default value to return if the specified index does not exist
-     * @return mixed the value of the element if found, otherwise the defaultValue
+     * Returns the elements of the collection
+     * @return array the elements of the collection
      */
-    /*public function getIndex($index, $defaultValue = null);*/
-
+    public function getElements();
 
     /**
-     * Obtain the index of a specified element.
-     * @param  mixed $element the element to look for
-     * @param  boolean $last whether to start looking from the last element
-     * @param  boolean $defaultValue the default value to return if the specified index does not exist
-     * @return mixed the index of the specified element if found, otherwise the defaultValue
+     * Returns the number of elements in the collection.
+     * @return integer the number of elements in the collection.
      */
-    /*public function indexOf($element, $last = false, $defaultValue = null);*/
-
+    public function getCount();
 
     /**
-     * Check if the collection contains elements or is empty.
+     * Check if the collection contains elements and returns true if it's empty
      * @return  boolean whether the collection is empty
      */
-    /*public function isEmpty();*/
-
-
-    /**
-     * Removes the specified index from the collection.
-     * @param   mixed $index the index to be removed
-     * @param   boolean $caseSensitive whether the index to look for should be case sensitive.
-     * @return  void
-     */
-    /*public function removeIndex($index, $caseSensitive = true);*/
-
-
-    /**
-     * Removes the first occurence of the element from the invoking collection.
-     * @param   mixed $element the element to be removed from the collection
-     * @param   boolean $last whether to start removing from the last element
-     * @return  void
-     */
-    /*public function remove($element, $last = false);*/
-
-
-    /**
-     * Removes all elements, specified, from the invoking collection.
-     * @param   mixed $elements the elements to be removed
-     * @return  void
-     */
-    /*public function removeAll($elements);*/
-
-
-    /**
-     * Retain all elements, specified, from the invoking collection.
-     * @param   mixed $elements the elements to be retained
-     * @return  void
-     */
-    /*public function retainAll($elements);*/
-
+    public function getIsEmpty();
 
     /**
      * Returns an array that contains all the elements of the collection.
      * @return  array the array of elements
      */
-    /*public function toArray();*/
+    public function toArray();
 }

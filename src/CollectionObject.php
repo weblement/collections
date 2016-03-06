@@ -9,22 +9,41 @@ use Traversable;
 
 abstract class CollectionObject extends Object implements Collection
 {
+    /**
+     * @var Elements[] the elements in this collection
+     */
     private $_elements = [];
 
+    /**
+     * Describes if the collection is indexed or not
+     * Child classes should override this method if the elements should be indexed.
+     * @return boolean whether the collection is indexed or not
+     */
     public function getIsIndexed()
     {
         return false;
     }
 
-    public function __construct($elements = [])
+    /**
+     * Constructor
+     * @param array $elements the initial elements that will be part of the collection
+     * @param array $config name-value pairs that will be used to initialize the object properties
+     */
+    public function __construct($elements = [], $config = [])
     {
         if(!is_array($elements) && !($elements instanceof Traversable)) {
             throw new InvalidArgumentException('Argument `$elements` must be an array or implement Traversable.');
         }
 
-        $this->add($elements);
+        static::add($elements);
+        parent::__construct($config);
     }
 
+    /**
+     * Add elements to the collection.
+     * @param   mixed $elements the elements to be added to the collection
+     * @return  void
+     */
     public function add($elements)
     {
         if(!is_array($elements) && !($elements instanceof Traversable)) {
@@ -44,6 +63,12 @@ abstract class CollectionObject extends Object implements Collection
         }
     }
 
+    /**
+     * Checks if an element is present in the collection
+     * @param   mixed $elements the elements that needs to be checked in the collection
+     * @param   boolean $strict if the check should be strict (e.g. object types) or not
+     * @return  boolean whether the collection contain the element
+     */
     public function contains($elements, $strict = false)
     {
         if(!is_array($elements) && !($elements instanceof Traversable)) {
@@ -61,6 +86,11 @@ abstract class CollectionObject extends Object implements Collection
         return true;
     }
 
+    /**
+     * Removes the first occurence of the element from the invoking collection.
+     * @param   mixed $elements
+     * @return  void
+     */
     public function remove($elements)
     {
         $elements = (array) $elements;
@@ -73,46 +103,96 @@ abstract class CollectionObject extends Object implements Collection
         }
     }
 
+    /**
+     * Removes all elements from the collection.
+     * @return  void
+     */
     public function clear()
     {
         $this->_elements = [];
     }
 
+    /**
+     * Returns the elements of the collection
+     * @return array the elements of the collection
+     */
     public function getElements()
     {
         return $this->_elements;
     }
 
+    /**
+     * Sets the elements of the collection
+     * This method should be usable only by the main or child classes
+     * To add or remove elements to the collection, the `add()` and `remove()` function
+     * should be used
+     * @param $eelements the elements to be set as the collection elements
+     * @return  void
+     */
     protected function setElements($elements)
     {
         return $this->_elements = $elements;
     }
 
-    public function toArray()
-    {
-        return $this->elements;
-    }
-
+    /**
+     * Returns an iterator for traversing the cookies in the collection.
+     * This method is required by the SPL interface [[\IteratorAggregate]].
+     * It will be implicitly called when you use `foreach` to traverse the collection.
+     * @return ArrayIterator an iterator for traversing the cookies in the collection.
+     */
     public function getIterator()
     {
         return new ArrayIterator($this->_elements);
     }
 
+    /**
+     * Returns the number of cookies in the collection.
+     * This method is required by the SPL `Countable` interface.
+     * It will be implicitly called when you use `count($collection)`.
+     * @return integer the number of cookies in the collection.
+     */
     public function count()
     {
         return count($this->_elements);
     }
 
+    /**
+     * Returns the number of elements in the collection.
+     * @return integer the number of elements in the collection.
+     */
     public function getCount() 
     {
         return $this->count();
     }
 
+    /**
+     * Check if the collection contains elements and returns true if it's empty
+     * @return  boolean whether the collection is empty
+     */
     public function getIsEmpty()
     {
         return $this->count() === 0;
     }
 
+    /**
+     * Returns the elements of the collection as an array
+     * @return array the elements of the collection
+     */
+    public function toArray()
+    {
+        return $this->elements;
+    }
+
+    /**
+     * Displays debug info about the object.
+     * By default, the properties of the object is returned. This includes the
+     * visibility, and type
+     * 
+     * Do not call this method directly as it is a PHP magic method that
+     * will be implicitly called when dumping the object for debug info.
+     * i.e. using `var_dump()` on the object
+     * @return array the debug info as a the object properties.
+     */
     public function __debugInfo()
     {
         return [
