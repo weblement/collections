@@ -182,23 +182,4 @@ abstract class CollectionObject extends Object implements Collection
     {
         return $this->elements;
     }
-
-    /**
-     * Displays debug info about the object.
-     * By default, the properties of the object is returned. This includes the
-     * visibility, and type
-     * 
-     * Do not call this method directly as it is a PHP magic method that
-     * will be implicitly called when dumping the object for debug info.
-     * i.e. using `var_dump()` on the object
-     * @return array the debug info as a the object properties.
-     */
-    public function __debugInfo()
-    {
-        return [
-            'isEmpty' => $this->isEmpty,
-            'count' => $this->count,
-            'elements' => $this->elements,
-        ];
-    }
 }

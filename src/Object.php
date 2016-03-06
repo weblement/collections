@@ -4,6 +4,7 @@ namespace weblement\collections;
 
 use Exception;
 use BadMethodCallException;
+use ReflectionMethod;
 
 class Object
 {
@@ -218,5 +219,43 @@ class Object
     public function hasMethod($name)
     {
         return method_exists($this, $name);
+    }
+
+    /**
+     * Displays debug info about the object.
+     * By default, the properties of the object is returned. This includes the
+     * visibility, and type
+     * 
+     * Do not call this method directly as it is a PHP magic method that
+     * will be implicitly called when dumping the object for debug info.
+     * i.e. using `var_dump()` on the object
+     * @return array the debug info as a the object properties.
+     */
+    public function __debugInfo()
+    {
+        $debugInfo = [];
+        
+        foreach (get_class_vars(static::className()) as $property => $value)
+        {
+            if($this->canGetProperty($property)) {
+                $debugInfo[$property] = $value;
+            }
+        }
+
+        foreach (get_class_methods(static::className()) as $method)
+        {
+            $reflectionMethod = new ReflectionMethod(static::className(), $method);
+
+            if($reflectionMethod->getNumberOfParameters() > 0) {
+                continue;
+            }
+            elseif(($property = lcfirst(ltrim($method, 'get'))) && $this->canGetProperty($property)) {
+                $debugInfo[$property] = $this->$method();
+            }
+        }
+
+        ksort($debugInfo);
+
+        return $debugInfo;
     }
 }
