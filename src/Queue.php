@@ -4,11 +4,6 @@ namespace weblement\collections;
 
 class Queue extends CollectionObject
 {
-    public function isIndexed()
-    {
-        return false;
-    }
-
     public function peek()
     {
         return $this->getIndex(0);

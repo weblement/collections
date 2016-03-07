@@ -5,7 +5,6 @@ namespace weblement\collections;
 use ArrayIterator;
 use InvalidArgumentException;
 use Exception;
-use Traversable;
 
 abstract class CollectionObject extends Object implements Collection
 {
@@ -29,10 +28,10 @@ abstract class CollectionObject extends Object implements Collection
      * @param array $elements the initial elements that will be part of the collection
      * @param array $config name-value pairs that will be used to initialize the object properties
      */
-    public function __construct($elements = [], $config = [])
+    public function __construct(array $elements = [], array $config = [])
     {
-        if(!is_array($elements) && !($elements instanceof Traversable)) {
-            throw new InvalidArgumentException('Argument `$elements` must be an array or implement Traversable.');
+        if(!is_array($elements)) {
+            throw new InvalidArgumentException('Argument `$elements` must be an array.');
         }
 
         static::add($elements);
@@ -41,12 +40,39 @@ abstract class CollectionObject extends Object implements Collection
 
     /**
      * Add elements to the collection.
+     * The default implementation allows you to add one or multiple elements (specified as an array)
+     * 
+     * For non-indexed collection, `getIsIndexed() === false` 
+     * To append one element at the end of the collection, simply use:
+     * `$collection->add('a')` or `$collection->add(['a'])`
+     * To add multiple elements use:
+     * `$collection->add(['a', 'b', 'c'])`
+     * To add the elements from another Collection (CollectionObject) use:
+     * `$collection->add($collection2->elements)`
+     * To add a Collection itself to the elements:
+     * `$collection->add($collection2)` or `$collection->add([$collection2])`
+     * To append an array to the collection
+     * `$collection->add([['a', 'b', 'c']])`
+     * To append multiple arrays, just add them to the array parameter: 
+     * `$collection->add([['a', 'b', 'c'], ['d', 'e', 'f']])`
+     * 
+     * For indexed collection `getIsIndexed() === true` 
+     * To append one element at the end of the collection, use:
+     * `$collection->add('a')`
+     * To add an element at a specific index, pass the element using an array where the key is the index:
+     * `$collection->add(['key' => 'value'])`
+     * This will override the existing element at the specified index.
+     * To add an array or another collection to an index, just add it to the value:
+     * `$collection->add(['key' => $collection])`, `$collection->add(['key' => ['a', 'b', 'c']])`
+     * To add multiple arrays or collections, add them to the array:
+     * `$collection->add(['key1' => ['a', 'b', 'c'], 'key2' => ['d', 'e', 'f']])`
+     * 
      * @param   mixed $elements the elements to be added to the collection
      * @return  void
      */
     public function add($elements)
     {
-        if(!is_array($elements) && !($elements instanceof Traversable)) {
+        if(!is_array($elements)) {
             $this->_elements[] = $elements;
         }
         else
@@ -66,18 +92,19 @@ abstract class CollectionObject extends Object implements Collection
     /**
      * Checks if an element is present in the collection
      * @param   mixed $elements the elements that needs to be checked in the collection
-     * @param   boolean $strict if the check should be strict (e.g. object types) or not
-     * @return  boolean whether the collection contain the element
+     * @param   boolean $strict if the check should be strict (i.e. use ===)
+     * If the element specified is an object, strict will always be true.
+     * @return  boolean whether the collection contain the elements specified
      */
     public function contains($elements, $strict = false)
     {
-        if(!is_array($elements) && !($elements instanceof Traversable)) {
-            return array_search($elements, $this->getElements(), $strict) !== false;
+        if(!is_array($elements)) {
+            return in_array($elements, $this->getElements(), is_object($elements) || $strict);
         }
         else {
             foreach ($elements as $element) 
             {
-                if(!$this->contains($element)) {
+                if(!in_array($element, $this->getElements(), is_object($element) || $strict)) {
                     return false;
                 }
             }
