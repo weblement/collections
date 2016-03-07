@@ -43,32 +43,43 @@ abstract class CollectionObject extends Object implements Collection
      * The default implementation allows you to add one or multiple elements (specified as an array)
      * 
      * For non-indexed collection, `getIsIndexed() === false` 
+     * 
      * To append one element at the end of the collection, simply use:
      * `$collection->add('a')` or `$collection->add(['a'])`
+     * 
      * To add multiple elements use:
      * `$collection->add(['a', 'b', 'c'])`
+     * 
      * To add the elements from another Collection (CollectionObject) use:
      * `$collection->add($collection2->elements)`
+     * 
      * To add a Collection itself to the elements:
      * `$collection->add($collection2)` or `$collection->add([$collection2])`
+     * 
      * To append an array to the collection
      * `$collection->add([['a', 'b', 'c']])`
+     * 
      * To append multiple arrays, just add them to the array parameter: 
      * `$collection->add([['a', 'b', 'c'], ['d', 'e', 'f']])`
+     *
      * 
      * For indexed collection `getIsIndexed() === true` 
+     * 
      * To append one element at the end of the collection, use:
      * `$collection->add('a')`
+     * 
      * To add an element at a specific index, pass the element using an array where the key is the index:
      * `$collection->add(['key' => 'value'])`
      * This will override the existing element at the specified index.
+     * 
      * To add an array or another collection to an index, just add it to the value:
      * `$collection->add(['key' => $collection])`, `$collection->add(['key' => ['a', 'b', 'c']])`
+     * 
      * To add multiple arrays or collections, add them to the array:
      * `$collection->add(['key1' => ['a', 'b', 'c'], 'key2' => ['d', 'e', 'f']])`
      * 
-     * @param   mixed $elements the elements to be added to the collection
-     * @return  void
+     * @param mixed $elements the elements to be added to the collection
+     * @return void
      */
     public function add($elements)
     {
@@ -90,21 +101,46 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Checks if an element is present in the collection
-     * @param   mixed $elements the elements that needs to be checked in the collection
-     * @param   boolean $strict if the check should be strict (i.e. use ===)
+     * Checks if an element / multiple elements is / are in the collection
+     * 
+     * Checking a single element:
+     * `$value = ...` can be anything but an array:
+     * `$collection->contains($value)`
+     * 
+     * Check if collection contains multiple values:
+     * `$values = ['a', 'b', 'c']`;
+     * `$collection->contains($values)`
+     *
+     * Check if collection contains an array:
+     * `$array = ['a', 'b', 'c']`;
+     * `$collection->contains([$array])`
+     *
+     * Check if collection contains the elements from another collection `$c`
+     * `$collection->contains($c->elements)`
+     *
+     * Check if collection contains another collection `$c`
+     * `$collection->contains($c)`
+     *
+     * When using `$strict`, strict comparison will be done
+     * i.e. `'123' !== 123`, `123 === 123`
+     * When `$strict` is false, `'123' == 123`
+     *
+     * If looking for an object in the collection, strict will always be true even if speficied as false
+     * 
+     * @param mixed $elements the elements that needs to be checked in the collection
+     * @param boolean $strict if the check should be strict (i.e. use ===)
      * If the element specified is an object, strict will always be true.
      * @return  boolean whether the collection contain the elements specified
      */
     public function contains($elements, $strict = false)
     {
         if(!is_array($elements)) {
-            return in_array($elements, $this->getElements(), is_object($elements) || $strict);
+            return in_array($elements, $this->elements, is_object($elements) || $strict);
         }
         else {
             foreach ($elements as $element) 
             {
-                if(!in_array($element, $this->getElements(), is_object($element) || $strict)) {
+                if(!in_array($element, $this->elements, is_object($element) || $strict)) {
                     return false;
                 }
             }
@@ -114,19 +150,38 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Removes the first occurence of the element from the invoking collection.
-     * @param   mixed $elements
-     * @return  void
+     * Removes the first occurence of the element from the collection.
+     * @param mixed $elements the elements to be removed from the collection
+     * @param boolean $strict if the check should be strict (i.e. use ===)
+     * If the element specified is an object, strict will always be true.
+     * @param boolean $last whether to remove the element starting from the last element in the collection
+     * @return void
      */
-    public function remove($elements)
+    public function remove($elements, $strict = false, $last = true)
     {
-        $elements = (array) $elements;
+        $collectionElements = $this->elements;
+        $index = [];
 
-        if(static::getIsIndexed()) {
-            $this->_elements = array_diff($this->elements, $elements);
+        if(!is_array($elements)) {
+            $index[] = array_search($elements, $last ? array_reverse($collectionElements, true) : $collectionElements, is_object($elements) || $strict);
         }
         else {
-            $this->_elements = array_values(array_diff($this->elements, $elements));
+            foreach ($elements as $element)
+            {
+                $index[] = array_search($element, $last ? array_reverse($collectionElements, true) : $collectionElements, is_object($element) || $strict);
+            }
+        }
+
+        foreach ($index as $key)
+        {
+            unset($collectionElements[$key]);
+        }
+
+        if(static::getIsIndexed()) {
+            $this->elements = $collectionElements;
+        }
+        else {
+            $this->elements = array_values($collectionElements);
         }
     }
 

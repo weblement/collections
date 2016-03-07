@@ -4,9 +4,16 @@ namespace weblement\collections;
 
 class Stack extends CollectionObject
 {
+    use Indexable;
+
+    public function getIsIndexed()
+    {
+        return false;
+    }
+
     public function peek()
     {
-        return $this->getIndex($this->count() - 1);
+        return $this->getElementAt($this->count - 1);
     }
 
     public function pop()
@@ -15,18 +22,14 @@ class Stack extends CollectionObject
             return null;
         }
 
-        $this->remove($value, true);
-        $arr = $this->toArray();
-        $this->clear();
-        $this->addAll($arr);
-        unset($arr);
+        $this->remove($value, true, true);
 
         return $value;
     }
 
     public function pos($element)
     {
-        return ($index = $this->indexOf($element)) ? $index + 1 : $index;
+        return ($index = $this->getIndexOf($element, true)) ? $this->count - $index : $index;
     }
 
     public function push($element)

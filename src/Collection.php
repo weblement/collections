@@ -42,11 +42,14 @@ interface Collection extends IteratorAggregate, Countable
     public function contains($element, $strict = false);
 
     /**
-     * Removes the first occurence of the element from the invoking collection.
-     * @param   mixed $elements
-     * @return  void
+     * Removes the first occurence of the element from the collection.
+     * @param mixed $elements the elements to be removed from the collection
+     * @param boolean $strict if the check should be strict (i.e. use ===)
+     * If the element specified is an object, strict will always be true.
+     * @param boolean $last whether to remove the element starting from the last element in the collection
+     * @return void
      */
-    public function remove($elements);
+    public function remove($elements, $strict = false, $last = true);
 
     /**
      * Removes all elements from the collection.
