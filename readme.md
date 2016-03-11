@@ -15,7 +15,6 @@ The preferred way to install the library is through [composer](https://getcompos
 
 Either run
 ```
-composer global require "fxp/composer-asset-plugin:~1.1.1"
 composer require weblement/collection
 ```
 
