@@ -11,17 +11,15 @@ Weblement Collection is a library intended to make the manipulation of different
 
 ## Installation
 
-The preferred way to install the library is through [composer](http://getcomposer.org/download/).
+The preferred way to install the library is through [composer](https://getcomposer.org/download/).
 
 Either run
-
 ```
 composer global require "fxp/composer-asset-plugin:~1.1.1"
 composer require weblement/collection
 ```
 
 or add
-
 ```json
 {
     "require-dev": {
@@ -29,5 +27,4 @@ or add
     }
 }
 ```
-
 to your `composer.json` file.
