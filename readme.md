@@ -1,1 +1,1 @@
-# Collections for PHP [![Build Status][travis-image]][travis-url] [![version][packagist-version]][packagist-url]
+# Collections for PHP
