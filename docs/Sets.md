@@ -32,7 +32,7 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 #### Class weblement\collections\Set
 |                   |                                                                           |
 |-----------------  |-----------------------------------------------------------------------    |
-| **Implements**    | IteratorAggregate, Countable, weblement\collections\Collection            |
+| **Implements**    | [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php), [Countable](http://php.net/manual/en/class.countable.php), weblement\collections\Collection            |
 | **Inheritance**   | weblement\collections\Object » weblement\collections\CollectionObject     |
 | **Uses Traits**   | N/A                                                                       |
 | **Source Code**   | https://github.com/weblement/collections/blob/master/src/Set.php          |
