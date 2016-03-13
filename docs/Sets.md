@@ -30,9 +30,9 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 ## API Documentation
 
 #### Class weblement\collections\Set
-|               |                                                                           |
-|-------------  |-----------------------------------------------------------------------    |
-| Implements    | IteratorAggregate, Countable, weblement\collections\Collection            |
-| Inheritance   | weblement\collections\Object » weblement\collections\CollectionObject     |
-| Uses Traits   | N/A                                                                       |
-| Source Code   | https://github.com/weblement/collections/blob/master/src/Set.php          |
+|                   |                                                                           |
+|-----------------  |-----------------------------------------------------------------------    |
+| **Implements**    | IteratorAggregate, Countable, weblement\collections\Collection            |
+| **Inheritance**   | weblement\collections\Object » weblement\collections\CollectionObject     |
+| **Uses Traits**   | N/A                                                                       |
+| **Source Code**   | https://github.com/weblement/collections/blob/master/src/Set.php          |
