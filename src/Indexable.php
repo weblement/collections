@@ -29,7 +29,7 @@ trait Indexable
         }
         else 
         {
-            foreach (array_keys($this->elements) as $key) 
+            foreach(array_keys($this->elements) as $key) 
             {
                 if (strcasecmp($index, $key) === 0) {
                     return true;

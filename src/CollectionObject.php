@@ -11,7 +11,7 @@ abstract class CollectionObject extends Object implements Collection
     /**
      * @var Elements[] the elements in this collection
      */
-    private $_elements = [];
+    protected $_elements = [];
 
     /**
      * Describes if the collection is indexed or not
@@ -88,7 +88,7 @@ abstract class CollectionObject extends Object implements Collection
         }
         else
         {
-            foreach ($elements as $index => $element)
+            foreach($elements as $index => $element)
             {
                 if(static::getIsIndexed()) {
                     $this->_elements[$index] = $element;
@@ -138,7 +138,7 @@ abstract class CollectionObject extends Object implements Collection
             return in_array($elements, $this->elements, is_object($elements) || $strict);
         }
         else {
-            foreach ($elements as $element) 
+            foreach($elements as $element) 
             {
                 if(!in_array($element, $this->elements, is_object($element) || $strict)) {
                     return false;
@@ -166,13 +166,13 @@ abstract class CollectionObject extends Object implements Collection
             $index[] = array_search($elements, $last ? array_reverse($collectionElements, true) : $collectionElements, is_object($elements) || $strict);
         }
         else {
-            foreach ($elements as $element)
+            foreach($elements as $element)
             {
                 $index[] = array_search($element, $last ? array_reverse($collectionElements, true) : $collectionElements, is_object($element) || $strict);
             }
         }
 
-        foreach ($index as $key)
+        foreach($index as $key)
         {
             unset($collectionElements[$key]);
         }
