@@ -89,6 +89,7 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 public function add($elements)
 ```
 > Add elements to the collection.
+
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
@@ -99,6 +100,7 @@ public function add($elements)
 public function complement($elements, $strict = false)
 ```
 > Returns the difference between the collection and specified elements.
+
 |            |         |                                                                                                                                         |
 |------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | $elements  | mixed   | The elements that needs to be differentiated to.                                                                                        |
@@ -110,6 +112,7 @@ public function complement($elements, $strict = false)
 public function union($elements, $strict = false)
 ```
 > Returns an array of the collection elements with another set of elements
+
 |            |         |                                                                                    |
 |------------|---------|------------------------------------------------------------------------------------|
 | $elements  | mixed   | The elements that will be added to the existing collection elements                |
@@ -121,6 +124,7 @@ public function union($elements, $strict = false)
 public function intersect($elements, $strict = false)
 ```
 > Checks and returns elements which are present in both the collection and a specified group of elements
+
 |            |         |                                                                                                   |
 |------------|---------|---------------------------------------------------------------------------------------------------|
 | $elements  | mixed   | The elements that should be checked against                                                       |
