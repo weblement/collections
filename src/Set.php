@@ -42,7 +42,7 @@ class Set extends CollectionObject
     }
 
     /**
-     * Merge the collection with a set of elements
+     * Returns an array of the collection elements with another set of elements
      * @param  mixed $elements the elements that will be added to the existing collection elements
      * @param   boolean $strict if the check should be strict (e.g. object types) or not
      * @return array an array of elements containing the elements of the set and the 
