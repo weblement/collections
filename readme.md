@@ -15,14 +15,14 @@ The preferred way to install the library is through [composer](https://getcompos
 
 Either run
 ```
-composer require weblement/collection
+composer require weblement/collections
 ```
 
 or add
 ```json
 {
     "require-dev": {
-        "weblement/collection": "*"
+        "weblement/collections": "*"
     }
 }
 ```
