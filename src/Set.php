@@ -16,7 +16,7 @@ class Set extends CollectionObject
 
     /**
      * Returns the difference between the collection and specified elements
-     * @param  mixed $elements the elements that needs to be differentiated with
+     * @param  mixed $elements the elements that needs to be differentiated to
      * @param   boolean $strict if the check should be strict (e.g. object types) or not
      * @return array the elements that are not part of the collection (i.e. the elements
      * that completes the collection when union to the specified elements)
@@ -43,7 +43,7 @@ class Set extends CollectionObject
 
     /**
      * Merge the collection with a set of elements
-     * @param  mixed $elements the elements that will be added to the collection
+     * @param  mixed $elements the elements that will be added to the existing collection elements
      * @param   boolean $strict if the check should be strict (e.g. object types) or not
      * @return array an array of elements containing the elements of the set and the 
      * specified elements

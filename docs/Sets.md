@@ -84,6 +84,7 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 
 #### Method Details
 
+
 ```php
 public function add($elements)
 ```
@@ -91,6 +92,37 @@ public function add($elements)
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
 | **return** | void  |                                                                                                         |
+
+
+```php
+public function complement($elements, $strict = false)
+```
+|            |         |                                                                                                                                         |
+|------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| $elements  | mixed   | The elements that needs to be differentiated to.                                                                                        |
+| $strict    | boolean | If the check should be strict (e.g. object types) or not.                                                                               |
+| **return** | array   | The elements that are not part of the collection (i.e. the elements that completes the collection when union to the specified elements) |
+
+
+```php
+public function union($elements, $strict = false)
+```
+|            |         |                                                                                    |
+|------------|---------|------------------------------------------------------------------------------------|
+| $elements  | mixed   | The elements that will be added to the existing collection elements                |
+| $strict    | boolean | If the check should be strict (e.g. object types) or not.                          |
+| **return** | array   | An array of elements containing the elements of the set and the specified elements |
+
+
+```php
+public function intersect($elements, $strict = false)
+```
+|            |         |                                                                                                   |
+|------------|---------|---------------------------------------------------------------------------------------------------|
+| $elements  | mixed   | The elements that should be checked against                                                       |
+| $strict    | boolean | If the check should be strict (e.g. object types) or not.                                         |
+| **return** | array   | An array of elements that are present in both the collection and the specified group of elements. |
+
 
 ## Examples
 -
