@@ -82,4 +82,15 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 | union()           | Merge the collection with a set of elements.                                                              | weblement\collections\Set                 |
 
 
+#### Method Details
+
+```php
+public function add($elements)
+```
+|            |       |                                                                                                         |
+|------------|-------|---------------------------------------------------------------------------------------------------------|
+| $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
+| **return** | void  |                                                                                                         |
+
 ## Examples
+-
