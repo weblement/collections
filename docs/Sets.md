@@ -190,8 +190,32 @@ var_dump($set->complement(['3', 4, 5, '5', 10]));
 // with strict comparison
 var_dump($set->complement(['3', 4, 5, '5', 10], true));
 // returns ['3', 4, '5', 10]
+
+// complements another Set or an object that is Traversable
+$set2 = new Set([0, 5, 10, 15, 20]);
+var_dump($set->complement($set2));
+// returns [0, 10, 15, 20]
 ```
 
 #### Intersection
 
+use weblement\collections\Set;
+
+$set = new Set([1, 2, 3, 5, 5]);
+
+var_dump($set->intersect([0,5,10,15,20]));
+// returns [5]
+
+// can be used on arrays and [[Traversable]] objects with or without `strict` mode
+
+
 #### Union
+
+use weblement\collections\Set;
+
+$set = new Set([1, 2, 3, 5, 5]);
+
+var_dump($set->intersect([0,5,10,15,20]));
+// returns [1, 2, 3, 5, 0, 10, 15, 20]
+
+// can be used on arrays and [[Traversable]] objects with or without `strict` mode
