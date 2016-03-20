@@ -199,6 +199,7 @@ var_dump($set->complement($set2));
 
 #### Intersection
 
+```php
 use weblement\collections\Set;
 
 $set = new Set([1, 2, 3, 5, 5]);
@@ -207,10 +208,11 @@ var_dump($set->intersect([0,5,10,15,20]));
 // returns [5]
 
 // can be used on arrays and [[Traversable]] objects with or without `strict` mode
-
+```
 
 #### Union
 
+```php
 use weblement\collections\Set;
 
 $set = new Set([1, 2, 3, 5, 5]);
@@ -219,3 +221,4 @@ var_dump($set->intersect([0,5,10,15,20]));
 // returns [1, 2, 3, 5, 0, 10, 15, 20]
 
 // can be used on arrays and [[Traversable]] objects with or without `strict` mode
+```
