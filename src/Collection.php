@@ -11,7 +11,6 @@
 namespace weblement\collections;
 use IteratorAggregate;
 use Countable;
-use ArrayAccess;
 
 /**
  * A Collection represents a group of objects known as its elements.

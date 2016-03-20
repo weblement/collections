@@ -2,6 +2,8 @@
 
 namespace weblement\collections;
 
+use Traversable;
+
 class Set extends CollectionObject
 {
     /**

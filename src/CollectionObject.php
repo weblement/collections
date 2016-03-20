@@ -4,7 +4,6 @@ namespace weblement\collections;
 
 use ArrayIterator;
 use InvalidArgumentException;
-use Exception;
 
 abstract class CollectionObject extends Object implements Collection
 {

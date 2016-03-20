@@ -133,4 +133,65 @@ public function intersect($elements, $strict = false)
 
 
 ## Examples
--
+
+#### Creating Set Objects
+
+```php
+use weblement\collections\Set;
+
+// create an empty set
+$set = new Set();
+// elements = {}
+
+//create a set on an array
+$set = new Set([1, 2, 3, 5, 5]);
+// elements = {1, 2, 3, 5}
+
+$set = new Set(['key1' => 'foo', 'key2' => bar]);
+// elements = {'foo', 'bar'}
+
+```
+
+#### Adding elements to a Set
+```php
+use weblement\collections\Set;
+
+$set = new Set([1, 2 ,3 ,5 ,5]);
+
+// Adding a single element to the set
+$set->add(10);
+// elements = {1, 2, 3, 5, 10}
+$set->add(3);
+// elements = {1, 2, 3, 5, 10}
+$set->add('foo');
+// elements = {1, 2, 3, 5, 10, 'foo'}
+
+// Adding multiple elements to the set
+$set->add([1, 2, 11, 100, 35, 'foo' => 'bar']);
+// elements = {1, 2, 3, 5, 10, 'foo', 11, 100, 35, 'bar'}
+```
+
+#### Complements: difference between the set and a group of elements
+
+```php
+use weblement\collections\Set;
+
+$set = new Set([1, 2, 3, 5, 5]);
+
+var_dump($set->complement([1, 2, 3, 4, 5, 6]));
+// returns [4, 6]
+
+var_dump($set->complement(['key1' => 'foo', 'key2' => 'bar']));
+// returns ['foo', 'bar']
+
+var_dump($set->complement(['3', 4, 5, '5', 10]));
+// returns [4, 10]
+
+// with strict comparison
+var_dump($set->complement(['3', 4, 5, '5', 10], true));
+// returns ['3', 4, '5', 10]
+```
+
+#### Intersection
+
+#### Union

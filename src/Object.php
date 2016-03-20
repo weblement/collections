@@ -235,7 +235,7 @@ class Object
     {
         $debugInfo = [];
         
-        foreach (get_class_vars(static::className()) as $property => $value)
+        foreach (call_user_func('get_object_vars', $this) as $property => $value)
         {
             if($this->canGetProperty($property)) {
                 $debugInfo[$property] = $value;
