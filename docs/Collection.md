@@ -1,4 +1,4 @@
-# Collections
+# Collection
 
 A Collection represents a group of objects known as its elements. There are different types of collections and they are all different to each others in various ways. Some are indexed and others are not. Some allow duplicate elements and others do not. The collection interface contains all the general methods that all collections have in common.
 
@@ -33,11 +33,11 @@ A Collection represents a group of objects known as its elements. There are diff
 
 ###### add()
 ```php
-public function add($elements)
+public abstract function add($elements)
 ```
 > Add elements to the collection.
 
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
-| $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
+| $elements  | mixed | The elements to be added to the collection. |
 | **return** | void  |                                                                                                         |
