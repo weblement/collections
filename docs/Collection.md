@@ -41,7 +41,7 @@ public abstract void add($elements)
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | $elements  | mixed | The elements to be added to the collection. |
 | **return** | void  |                                                                                                         |
-
+___
 
 ###### clear()
 ```php
@@ -52,7 +52,7 @@ public abstract void clear()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | void  |                                                                                                         |
-
+___
 
 ###### contains()
 ```php
@@ -65,7 +65,7 @@ public abstract void contains($elements, $strict = false)
 | $elements | mixed | The elements to be removed from the collection |
 | $strict | boolean | if the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true. |
 | **return** | void  |                                                                                                         |
-
+___
 
 ###### count()
 ```php
@@ -76,7 +76,7 @@ public abstract int count()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | int  | The number of elements in the collection.                                                                                                        |
-
+___
 
 ###### getCount()
 ```php
@@ -87,7 +87,7 @@ public abstract int getCount()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | int  | The number of elements in the collection.                                                                                                        |
-
+___
 
 ###### getElements()
 ```php
@@ -98,7 +98,7 @@ public abstract array getElements()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | array  | The elements of the collection                                                                                                 |
-
+___
 
 ###### getIsEmpty()
 ```php
@@ -109,7 +109,7 @@ public abstract boolean getIsEmpty()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | boolean  | Whether the collection is empty                                                                                        |
-
+___
 
 ###### getIsIndexed()
 ```php
@@ -120,7 +120,7 @@ public abstract boolean getIsIndexed()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | boolean  | Whether the collection is indexed or not                                                                                       |
-
+___
 
 ###### getIterator()
 ```php
@@ -131,7 +131,7 @@ public abstract Traversable getIterator()
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | **return** | Traversable  | A Traversable iterator                                                                                       |
-
+___
 
 ###### remove()
 ```php
@@ -145,7 +145,7 @@ public abstract void remove($elements, $strict = false, $last = true)
 | $strict| boolean | If the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true.  |
 | $last | boolean | whether to remove the element starting from the last element in the collection |
 | **return** | void  |                                                                                        |
-
+___
 
 ###### toArray()
 ```php
