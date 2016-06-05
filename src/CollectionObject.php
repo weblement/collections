@@ -38,7 +38,7 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Add elements to the collection.
+     * Add an element or multiple elements to the collection.
      * The default implementation allows you to add one or multiple elements (specified as an array)
      * 
      * For non-indexed collection, `getIsIndexed() === false` 
@@ -149,7 +149,7 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Removes the first occurence of the element from the collection.
+     * Removes the first occurence of the element from the collection starting from the last added element.
      * @param mixed $elements the elements to be removed from the collection
      * @param boolean $strict if the check should be strict (i.e. use ===)
      * If the element specified is an object, strict will always be true.
@@ -216,10 +216,10 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Returns an iterator for traversing the cookies in the collection.
+     * Returns an iterator for traversing the elements in the collection.
      * This method is required by the SPL interface [[\IteratorAggregate]].
      * It will be implicitly called when you use `foreach` to traverse the collection.
-     * @return ArrayIterator an iterator for traversing the cookies in the collection.
+     * @return ArrayIterator an iterator for traversing the elements in the collection.
      */
     public function getIterator()
     {
@@ -227,10 +227,10 @@ abstract class CollectionObject extends Object implements Collection
     }
 
     /**
-     * Returns the number of cookies in the collection.
+     * Returns the number of elements in the collection.
      * This method is required by the SPL `Countable` interface.
      * It will be implicitly called when you use `count($collection)`.
-     * @return integer the number of cookies in the collection.
+     * @return integer the number of elements in the collection.
      */
     public function count()
     {
@@ -257,7 +257,7 @@ abstract class CollectionObject extends Object implements Collection
 
     /**
      * Returns the elements of the collection as an array
-     * @return array the elements of the collection
+     * @return array An array containing all the elements present in the collection
      */
     public function toArray()
     {

@@ -30,7 +30,7 @@ interface Collection extends IteratorAggregate, Countable
      * @param   mixed $elements the elements to be added to the collection
      * @return  void
      */
-    public function add($element);
+    public function add($elements);
 
     /**
      * Checks if an element is present in the collection
@@ -38,10 +38,10 @@ interface Collection extends IteratorAggregate, Countable
      * @param   boolean $strict if the check should be strict (e.g. case sensitive) or not
      * @return  boolean whether the collection contain the element
      */
-    public function contains($element, $strict = false);
+    public function contains($elements, $strict = false);
 
     /**
-     * Removes the first occurence of the element from the collection.
+     * Removes the first occurence of the element from the collection starting from the last added element.
      * @param mixed $elements the elements to be removed from the collection
      * @param boolean $strict if the check should be strict (i.e. use ===)
      * If the element specified is an object, strict will always be true.
@@ -76,7 +76,7 @@ interface Collection extends IteratorAggregate, Countable
 
     /**
      * Returns an array that contains all the elements of the collection.
-     * @return  array the array of elements
+     * @return  array An array containing all the elements present in the collection.
      */
     public function toArray();
 }
