@@ -5,42 +5,43 @@ The CollectionObject is an object that will represent a [Collection](https://git
 ## API Documentation
 
 #### Abstract Class weblement\collections\CollectionObject
-|                    |                                                                                                                                      |
-|--------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| **Extends**        | weblement\collections\Object |
-| **Implements**        | [weblement\collections\Collection](https://github.com/weblement/collections/blob/master/docs/Collection.md) |
-| **Implemented By** | weblement\collections\ArrayList, weblement\collections\Map, weblement\collections\Queue, [weblement\collections\Set](https://github.com/weblement/collections/blob/master/docs/Set.md), weblement\collections\Stack                                                                                            |
-| **Source Code**    | https://github.com/weblement/collections/blob/master/src/CollectionObject.php                                                              |
+|                    |                                                                                                                                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Extends**        | weblement\collections\Object                                                                                                                                                                                        |
+| **Implements**     | [weblement\collections\Collection](https://github.com/weblement/collections/blob/master/docs/Collection.md)                                                                                                         |
+| **Implemented By** | weblement\collections\ArrayList, weblement\collections\Map, weblement\collections\Queue, [weblement\collections\Set](https://github.com/weblement/collections/blob/master/docs/Set.md), weblement\collections\Stack |
+| **Source Code**    | https://github.com/weblement/collections/blob/master/src/CollectionObject.php                                                                                                                                       |
 
 
 #### Public Methods
 
-| Method            | Description                                                                                               | Defined By                                |
-|------------------ |--------------------------------------------------------------------------------------------------------   |----------------------------------------   |
-| __call()          | Calls the named method which is not a class method.                                                       | weblement\collections\Object              |
-| [__construct()](__construct)     | Constructor.                                                                                              | weblement\collections\CollectionObject    |
-| __debugInfo()     | Returns the public properties of the collection for debugging.                                            | weblement\collections\Object              |
-| __get()           | Returns the value of an object property.                                                                  | weblement\collections\Object              |
-| __isset()         | Checks if a property is set, i.e. defined and not null.                                                   | weblement\collections\Object              |
-| __set()           | Sets value of an object property.                                                                         | weblement\collections\Object              |
-| __unset()         | Sets an object property to null.                                                                          | weblement\collections\Object              |
-| [add()](#add)             | Add an element or multiple elements to the collection.                                                    | weblement\collections\CollectionObject    |
-| canGetProperty()  | Returns a value indicating whether a property can be set.                                                 | weblement\collections\Object              |
-| canSetProperty()  | Returns a value indicating whether a method is defined.                                                   | weblement\collections\Object              |
-| className()       | Returns the fully qualified name of this class.                                                           | weblement\collections\Object              |
-| [clear()](#clear)           | Removes all elements from the collection.                                                                 | weblement\collections\CollectionObject    |
-| [contains()](#contains)        | Checks whether the collection contains an element or multiple elements.                                   | weblement\collections\CollectionObject    |
-| [count()](#count)           | Returns the number of elements in the collection.                                                         | weblement\collections\CollectionObject    |
-| [getCount()](#getcount)        | Returns the number of elements in the collection.                                                         | weblement\collections\CollectionObject    |
-| [getElements()](#getelements)     | Returns an array with all the elements of the collection.                                                 | weblement\collections\CollectionObject    |
-| [getIsEmpty()](#getisempty)      | Returns whether the collection is empty.                                                                  | weblement\collections\CollectionObject    |
-| [getIsIndexed()](#getisindexed)    | Returns whether the collection is indexed.                                                                | weblement\collections\CollectionObject    |
-| [getIterator()](#getiterator)     | Returns an iterator for traversing the elements in the collection.                                        | weblement\collections\CollectionObject    |
-| hasMethod()       | Returns a value indicating whether a method is defined.                                                   | weblement\collections\Object              |
-| hasProperty()     | Returns a value indicating whether a property is defined.                                                 | weblement\collections\Object              |
-| init()            | Initialize the collection.                                                                                | weblement\collections\Object              |
-| [remove()](#remove)          | Remove an element or multiple elements from the collection.                                               | weblement\collections\CollectionObject    |
-| [toArray()](#toarray)         | Returns an array with all the elements of the collection.                                                 | weblement\collections\CollectionObject    |
+| Method                          | Description                                                             | Defined By                             |
+|---------------------------------|-------------------------------------------------------------------------|----------------------------------------|
+| __call()                        | Calls the named method which is not a class method.                     | weblement\collections\Object           |
+| [__construct()](__construct)    | Constructor.                                                            | weblement\collections\CollectionObject |
+| __debugInfo()                   | Returns the public properties of the collection for debugging.          | weblement\collections\Object           |
+| __get()                         | Returns the value of an object property.                                | weblement\collections\Object           |
+| __isset()                       | Checks if a property is set, i.e. defined and not null.                 | weblement\collections\Object           |
+| __set()                         | Sets value of an object property.                                       | weblement\collections\Object           |
+| __unset()                       | Sets an object property to null.                                        | weblement\collections\Object           |
+| [add()](#add)                   | Add an element or multiple elements to the collection.                  | weblement\collections\CollectionObject |
+| canGetProperty()                | Returns a value indicating whether a property can be set.               | weblement\collections\Object           |
+| canSetProperty()                | Returns a value indicating whether a method is defined.                 | weblement\collections\Object           |
+| className()                     | Returns the fully qualified name of this class.                         | weblement\collections\Object           |
+| [clear()](#clear)               | Removes all elements from the collection.                               | weblement\collections\CollectionObject |
+| [contains()](#contains)         | Checks whether the collection contains an element or multiple elements. | weblement\collections\CollectionObject |
+| [count()](#count)               | Returns the number of elements in the collection.                       | weblement\collections\CollectionObject |
+| [getCount()](#getcount)         | Returns the number of elements in the collection.                       | weblement\collections\CollectionObject |
+| [getElements()](#getelements)   | Returns an array with all the elements of the collection.               | weblement\collections\CollectionObject |
+| [getIsEmpty()](#getisempty)     | Returns whether the collection is empty.                                | weblement\collections\CollectionObject |
+| [getIsIndexed()](#getisindexed) | Returns whether the collection is indexed.                              | weblement\collections\CollectionObject |
+| [getIterator()](#getiterator)   | Returns an iterator for traversing the elements in the collection.      | weblement\collections\CollectionObject |
+| hasMethod()                     | Returns a value indicating whether a method is defined.                 | weblement\collections\Object           |
+| hasProperty()                   | Returns a value indicating whether a property is defined.               | weblement\collections\Object           |
+| init()                          | Initialize the collection.                                              | weblement\collections\Object           |
+| [remove()](#remove)             | Remove an element or multiple elements from the collection.             | weblement\collections\CollectionObject |
+| [toArray()](#toarray)           | Returns an array with all the elements of the collection.               | weblement\collections\CollectionObject |
+
 
 #### Method Details
 
@@ -52,11 +53,11 @@ public void __construct($elements = [], $config = [])
 
 > The `add()` method of the collection instance will be used to add the elements to the collection.
 
-|            |       |                                             |
-|------------|-------|---------------------------------------------|
-| $elements  | array | The initial elements that will be part of the collection |
-| $config | array | Name-value pairs that will be used to initialize the object properties |
-| **return** | void  |                                             |
+|            |       |                                                                        |
+|------------|-------|------------------------------------------------------------------------|
+| $elements  | array | The initial elements that will be part of the collection               |
+| $config    | array | Name-value pairs that will be used to initialize the object properties |
+| **return** | void  |                                                                        |
 ___
 
 ###### add()
