@@ -1,4 +1,4 @@
-# Sets
+# Set
 
 A set is a collection of distinct elements, i.e. a collection that contains no duplicate elements. Sets contain no pair of elements `element1` and `element2` such that `element1 === element2`.
 
