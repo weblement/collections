@@ -15,7 +15,7 @@ The preferred way to install the library is through [composer](https://getcompos
 
 Either run
 ```
-php composer.phar require --prefer-dist weblement\collections
+php composer.phar require --prefer-dist weblement/collections
 ```
 
 or add
