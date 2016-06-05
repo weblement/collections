@@ -2,6 +2,7 @@
 
 The CollectionObject is an object that will represent a [Collection](https://github.com/weblement/collections/blob/master/docs/Collection.md)
 
+## API Documentation
 #### Class weblement\collections\CollectionObject
 |                    |                                                                                                                                      |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------|
