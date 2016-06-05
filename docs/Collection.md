@@ -57,7 +57,7 @@ ___
 ```php
 public abstract void contains($elements, $strict = false)
 ```
-> Removes all elements from the collection.
+> Checks if an element is present in the collection
 
 |            |         |                                                                                                                  |
 |------------|---------|------------------------------------------------------------------------------------------------------------------|
