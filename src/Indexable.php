@@ -67,7 +67,7 @@ trait Indexable
      * @param  mixed  $element the element whose index should be retrieved
      * @param  boolean $last whether to start looking from the end (last element added) of the collection
      * @param  mixed $defaultValue the default value to return if the element does not exist
-     * @return miced the index of the element
+     * @return mixed the index of the element
      */
     public function getIndexOf($element, $last = false, $defaultValue = null)
     {
