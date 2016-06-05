@@ -14,20 +14,19 @@ A Collection represents a group of objects known as its elements. There are diff
 
 #### Public Methods
 
-| Method            | Description                                                                                               | Defined By                                |
-|------------------ |--------------------------------------------------------------------------------------------------------   |----------------------------------------   |
-| [add()](#add)             | Add an element or multiple elements to the collection.                                                    | [weblement\collections\Collection](#collection)    |
-| [clear()](#clear)            | Removes all elements from the collection.                                                                 | [weblement\collections\Collection](#collection)    |
-| [contains()](#contains)         | Checks whether the collection contains an element or multiple elements.                                   | [weblement\collections\Collection](#collection)    |
-| [count()](#count)            | Returns the number of elements in the collection.                                                         | [Countable](http://php.net/manual/en/class.countable.php)    |
-| [getCount()](#getcount)         | Returns the number of elements in the collection.                                                         | [weblement\collections\Collection](#collection)    |
-| [getElements()](#getelements)      | Returns an array with all the elements of the collection.                                                 | [weblement\collections\Collection](#collection)    |
-| [getIsEmpty()](#getisempty)       | Returns whether the collection is empty.                                                                  | [weblement\collections\Collection](#collection)    |
-| [getIsIndexed()](#getisindexed)     | Returns whether the collection is indexed.                                                                | [weblement\collections\Collection](#collection)    |
-| [getIterator()](#getiterator)      | Returns an iterator for traversing the elements in the collection.                                        | [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php)    |
-| [remove()](#remove)           | Remove an element or multiple elements from the collection.                                               | [weblement\collections\Collection](#collection)    |
-| [toArray()](#toarray)          | Returns an array with all the elements of the collection.                                                 | [weblement\collections\Collection](#collection)    |
-
+| Method                          | Description                                                             | Defined By                                                                |
+|---------------------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| [add()](#add)                   | Add an element or multiple elements to the collection.                  | [weblement\collections\Collection](#collection)                           |
+| [clear()](#clear)               | Removes all elements from the collection.                               | [weblement\collections\Collection](#collection)                           |
+| [contains()](#contains)         | Checks whether the collection contains an element or multiple elements. | [weblement\collections\Collection](#collection)                           |
+| [count()](#count)               | Returns the number of elements in the collection.                       | [Countable](http://php.net/manual/en/class.countable.php)                 |
+| [getCount()](#getcount)         | Returns the number of elements in the collection.                       | [weblement\collections\Collection](#collection)                           |
+| [getElements()](#getelements)   | Returns an array with all the elements of the collection.               | [weblement\collections\Collection](#collection)                           |
+| [getIsEmpty()](#getisempty)     | Returns whether the collection is empty.                                | [weblement\collections\Collection](#collection)                           |
+| [getIsIndexed()](#getisindexed) | Returns whether the collection is indexed.                              | [weblement\collections\Collection](#collection)                           |
+| [getIterator()](#getiterator)   | Returns an iterator for traversing the elements in the collection.      | [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php) |
+| [remove()](#remove)             | Remove an element or multiple elements from the collection.             | [weblement\collections\Collection](#collection)                           |
+| [toArray()](#toarray)           | Returns an array with all the elements of the collection.               | [weblement\collections\Collection](#collection)                           |
 
 #### Method Details
 
@@ -37,10 +36,10 @@ public abstract void add($elements)
 ```
 > Add elements to the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
+|            |       |                                             |
+|------------|-------|---------------------------------------------|
 | $elements  | mixed | The elements to be added to the collection. |
-| **return** | void  |                                                                                                         |
+| **return** | void  |                                             |
 ___
 
 ###### clear()
@@ -49,9 +48,9 @@ public abstract void clear()
 ```
 > Removes all elements from the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | void  |                                                                                                         |
+|            |      |   |
+|------------|------|---|
+| **return** | void |   |
 ___
 
 ###### contains()
@@ -60,11 +59,11 @@ public abstract void contains($elements, $strict = false)
 ```
 > Removes all elements from the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| $elements | mixed | The elements to be removed from the collection |
-| $strict | boolean | if the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true. |
-| **return** | void  |                                                                                                         |
+|            |         |                                                                                                                  |
+|------------|---------|------------------------------------------------------------------------------------------------------------------|
+| $elements  | mixed   | The elements to be removed from the collection                                                                   |
+| $strict    | boolean | if the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true. |
+| **return** | void    |                                                                                                                  |
 ___
 
 ###### count()
@@ -73,9 +72,9 @@ public abstract int count()
 ```
 > Count elements of the collection
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | int  | The number of elements in the collection.                                                                                                        |
+|            |     |                                           |
+|------------|-----|-------------------------------------------|
+| **return** | int | The number of elements in the collection. |
 ___
 
 ###### getCount()
@@ -84,9 +83,9 @@ public abstract int getCount()
 ```
 > Returns the number of elements in the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | int  | The number of elements in the collection.                                                                                                        |
+|            |     |                                           |
+|------------|-----|-------------------------------------------|
+| **return** | int | The number of elements in the collection. |
 ___
 
 ###### getElements()
@@ -95,9 +94,9 @@ public abstract array getElements()
 ```
 > Returns the number of elements in the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | array  | The elements of the collection                                                                                                 |
+|            |       |                                |
+|------------|-------|--------------------------------|
+| **return** | array | The elements of the collection |
 ___
 
 ###### getIsEmpty()
@@ -106,9 +105,9 @@ public abstract boolean getIsEmpty()
 ```
 > Check if the collection contains elements and returns true if it's empty
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | boolean  | Whether the collection is empty                                                                                        |
+|            |         |                                 |
+|------------|---------|---------------------------------|
+| **return** | boolean | Whether the collection is empty |
 ___
 
 ###### getIsIndexed()
@@ -117,9 +116,9 @@ public abstract boolean getIsIndexed()
 ```
 > Describes if the collection is indexed or not. Child classes should override this method if the elements should be indexed.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | boolean  | Whether the collection is indexed or not                                                                                       |
+|            |         |                                          |
+|------------|---------|------------------------------------------|
+| **return** | boolean | Whether the collection is indexed or not |
 ___
 
 ###### getIterator()
@@ -128,9 +127,9 @@ public abstract Traversable getIterator()
 ```
 > Retrieve an external iterator
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | Traversable  | A Traversable iterator                                                                                       |
+|            |             |                        |
+|------------|-------------|------------------------|
+| **return** | Traversable | A Traversable iterator |
 ___
 
 ###### remove()
@@ -139,12 +138,12 @@ public abstract void remove($elements, $strict = false, $last = true)
 ```
 > Removes the first occurence of the element from the collection starting from the last added element.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| $elements | mixed | The elements to be removed from the collection |
-| $strict| boolean | If the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true.  |
-| $last | boolean | whether to remove the element starting from the last element in the collection |
-| **return** | void  |                                                                                        |
+|            |         |                                                                                                                  |
+|------------|---------|------------------------------------------------------------------------------------------------------------------|
+| $elements  | mixed   | The elements to be removed from the collection                                                                   |
+| $strict    | boolean | If the check should be strict (i.e. use ===). If the element specified is an object, strict will always be true. |
+| $last      | boolean | whether to remove the element starting from the last element in the collection                                   |
+| **return** | void    |                                                                                                                  |
 ___
 
 ###### toArray()
@@ -153,6 +152,6 @@ public abstract array toArray()
 ```
 > Returns an array that contains all the elements of the collection.
 
-|            |       |                                                                                                         |
-|------------|-------|---------------------------------------------------------------------------------------------------------|
-| **return** | array | An array containing all the elements present in the collection.                                                                                      |
+|            |       |                                                                 |
+|------------|-------|-----------------------------------------------------------------|
+| **return** | array | An array containing all the elements present in the collection. |
