@@ -114,7 +114,8 @@ ___
 ```php
 public abstract boolean getIsIndexed()
 ```
-> Describes if the collection is indexed or not. Child classes should override this method if the elements should be indexed.
+> Describes if the collection is indexed or not.  
+> Child classes should override this method if the elements should be indexed.  
 
 |            |         |                                          |
 |------------|---------|------------------------------------------|
