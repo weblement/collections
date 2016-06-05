@@ -32,8 +32,8 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 #### Class weblement\collections\Set
 |                   |                                                                                                                                                                                   |
 |-----------------  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
-| **Implements**    | [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php), [Countable](http://php.net/manual/en/class.countable.php), weblement\collections\Collection            |
-| **Inheritance**   | weblement\collections\Object » weblement\collections\CollectionObject                                                                                                             |
+| **Implements**    | [weblement\collections\Collection](https://github.com/weblement/collections/blob/master/docs/Collection.md)            |
+| **Inheritance**   | weblement\collections\Object » [weblement\collections\CollectionObject](https://github.com/weblement/collections/blob/master/docs/CollectionObject.md)                                                                                                             |
 | **Uses Traits**   | N/A                                                                                                                                                                               |
 | **Source Code**   | https://github.com/weblement/collections/blob/master/src/Set.php                                                                                                                  |
 
@@ -53,19 +53,19 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 
 | Method            | Description                                                                                               | Defined By                                |
 |------------------ |--------------------------------------------------------------------------------------------------------   |----------------------------------------   |
-| __call()          | Calls the named method which is not a class method.                                                       | weblement\collections\Collection          |
+| __call()          | Calls the named method which is not a class method.                                                       | weblement\collections\Object              |
 | __construct()     | Constructor.                                                                                              | weblement\collections\CollectionObject    |
 | __debugInfo()     | Returns the public properties of the collection for debugging.                                            | weblement\collections\Object              |
 | __get()           | Returns the value of an object property.                                                                  | weblement\collections\Object              |
 | __isset()         | Checks if a property is set, i.e. defined and not null.                                                   | weblement\collections\Object              |
 | __set()           | Sets value of an object property.                                                                         | weblement\collections\Object              |
 | __unset()         | Sets an object property to null.                                                                          | weblement\collections\Object              |
-| add()             | Add an element or multiple elements to the collection.                                                    | weblement\collections\CollectionObject    |
+| [add()](#add)             | Add an element or multiple elements to the collection.                                                    | weblement\collections\CollectionObject    |
 | canGetProperty()  | Returns a value indicating whether a property can be set.                                                 | weblement\collections\Object              |
 | canSetProperty()  | Returns a value indicating whether a method is defined.                                                   | weblement\collections\Object              |
 | className()       | Returns the fully qualified name of this class.                                                           | weblement\collections\Object              |
 | clear()           | Removes all elements from the collection.                                                                 | weblement\collections\CollectionObject    |
-| complement()      | Returns the difference between the collection and specified elements.                                     | weblement\collections\Set                 |
+| [complement()](#complement)      | Returns the difference between the collection and specified elements.                                     | weblement\collections\Set                 |
 | contains()        | Checks whether the collection contains an element or multiple elements.                                   | weblement\collections\CollectionObject    |
 | count()           | Returns the number of elements in the collection.                                                         | weblement\collections\CollectionObject    |
 | getCount()        | Returns the number of elements in the collection.                                                         | weblement\collections\CollectionObject    |
@@ -76,15 +76,15 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 | hasMethod()       | Returns a value indicating whether a method is defined.                                                   | weblement\collections\Object              |
 | hasProperty()     | Returns a value indicating whether a property is defined.                                                 | weblement\collections\Object              |
 | init()            | Initialize the collection.                                                                                | weblement\collections\Object              |
-| intersect()       | Checks and returns elements which are present in both the collection and a specified group of elements    | weblement\collections\Set                 |
+| [intersect()](#intersect)       | Checks and returns elements which are present in both the collection and a specified group of elements    | weblement\collections\Set                 |
 | remove()          | Remove an element or multiple elements from the collection.                                               | weblement\collections\CollectionObject    |
 | toArray()         | Returns an array with all the elements of the collection.                                                 | weblement\collections\CollectionObject    |
-| union()           | Merge the collection with a set of elements.                                                              | weblement\collections\Set                 |
+| [union()](#union)           | Merge the collection with a set of elements.                                                              | weblement\collections\Set                 |
 
 
 #### Method Details
 
-
+###### add()
 ```php
 public function add($elements)
 ```
@@ -94,8 +94,9 @@ public function add($elements)
 |------------|-------|---------------------------------------------------------------------------------------------------------|
 | $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
 | **return** | void  |                                                                                                         |
+___
 
-
+###### complement()
 ```php
 public function complement($elements, $strict = false)
 ```
@@ -106,8 +107,9 @@ public function complement($elements, $strict = false)
 | $elements  | mixed   | The elements that needs to be differentiated to.                                                                                        |
 | $strict    | boolean | If the check should be strict (e.g. object types) or not.                                                                               |
 | **return** | array   | The elements that are not part of the collection (i.e. the elements that completes the collection when union to the specified elements) |
+___
 
-
+###### union()
 ```php
 public function union($elements, $strict = false)
 ```
@@ -118,8 +120,9 @@ public function union($elements, $strict = false)
 | $elements  | mixed   | The elements that will be added to the existing collection elements                |
 | $strict    | boolean | If the check should be strict (e.g. object types) or not.                          |
 | **return** | array   | An array of elements containing the elements of the set and the specified elements |
+___
 
-
+###### intersect()
 ```php
 public function intersect($elements, $strict = false)
 ```
@@ -130,7 +133,7 @@ public function intersect($elements, $strict = false)
 | $elements  | mixed   | The elements that should be checked against                                                       |
 | $strict    | boolean | If the check should be strict (e.g. object types) or not.                                         |
 | **return** | array   | An array of elements that are present in both the collection and the specified group of elements. |
-
+___
 
 ## Examples
 
