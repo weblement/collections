@@ -1,3 +1,28 @@
+# Queue
+
+A queue is a container of objects (a linear collection) that are inserted and removed according to the first-in first-out (FIFO) principle. An excellent example of a queue is a line of students in the food court of the UC. New additions to a line made to the back of the queue, while removal (or serving) happens in the front.
+
+## API Documentation
+
+#### Class weblement\collections\Queue
+|                 |                                                                                                                                                        |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Implements**  | [weblement\collections\Collection](https://github.com/weblement/collections/blob/master/docs/Collection.md)                                            |
+| **Inheritance** | weblement\collections\Object » [weblement\collections\CollectionObject](https://github.com/weblement/collections/blob/master/docs/CollectionObject.md) |
+| **Uses Traits** | [weblement\collections\Indexable](https://github.com/weblement/collections/blob/master/docs/Indexable.md)                                              |
+| **Source Code** | https://github.com/weblement/collections/blob/master/src/Queue.php                                                                                       |
+
+
+#### Public Properties
+
+| Property  | Type          | Description                                                        | Defined By                             |
+|-----------|---------------|--------------------------------------------------------------------|----------------------------------------|
+| count     | integer       | The number of elements in the collection.                          | weblement\collections\CollectionObject |
+| elements  | array         | The elements that belong to the collection.                        | weblement\collections\CollectionObject |
+| isEmpty   | boolean       | Whether this collection is empty.                                  | weblement\collections\CollectionObject |
+| isIndexed | boolean       | Whether the collection is indexed and index of an element matters. | weblement\collections\CollectionObject |
+| itereator | ArrayIterator | An iterator for traversing the cookies in the collection.          | weblement\collections\CollectionObject |
+
 #### Public Methods
 
 | Method                      | Description                                                                                            | Defined By                             |
