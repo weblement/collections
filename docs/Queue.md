@@ -73,7 +73,7 @@ ___
 
 ###### push()
 ```php
-public function int push($element)
+public function void push($element)
 ```
 > Add an element to the queue.
 
