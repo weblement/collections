@@ -207,7 +207,7 @@ abstract class CollectionObject extends Object implements Collection
      * This method should be usable only by the main or child classes
      * To add or remove elements to the collection, the `add()` and `remove()` function
      * should be used
-     * @param $eelements the elements to be set as the collection elements
+     * @param $elements the elements to be set as the collection elements
      * @return  void
      */
     protected function setElements($elements)
