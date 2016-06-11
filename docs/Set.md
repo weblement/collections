@@ -54,7 +54,7 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 | Method                      | Description                                                                                            | Defined By                             |
 |-----------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------|
 | __call()                    | Calls the named method which is not a class method.                                                    | weblement\collections\Object           |
-| __construct()               | Constructor.                                                                                           | weblement\collections\CollectionObject |
+| [__construct()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#__construct)               | Constructor.                                                                                           | weblement\collections\CollectionObject |
 | __debugInfo()               | Returns the public properties of the collection for debugging.                                         | weblement\collections\Object           |
 | __get()                     | Returns the value of an object property.                                                               | weblement\collections\Object           |
 | __isset()                   | Checks if a property is set, i.e. defined and not null.                                                | weblement\collections\Object           |
@@ -64,21 +64,21 @@ The complement of two sets `SetA` and `SetB` can also be called the difference o
 | canGetProperty()            | Returns a value indicating whether a property can be set.                                              | weblement\collections\Object           |
 | canSetProperty()            | Returns a value indicating whether a method is defined.                                                | weblement\collections\Object           |
 | className()                 | Returns the fully qualified name of this class.                                                        | weblement\collections\Object           |
-| clear()                     | Removes all elements from the collection.                                                              | weblement\collections\CollectionObject |
+| [clear()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#clear)                     | Removes all elements from the collection.                                                              | weblement\collections\CollectionObject |
 | [complement()](#complement) | Returns the difference between the collection and specified elements.                                  | weblement\collections\Set              |
-| contains()                  | Checks whether the collection contains an element or multiple elements.                                | weblement\collections\CollectionObject |
-| count()                     | Returns the number of elements in the collection.                                                      | weblement\collections\CollectionObject |
-| getCount()                  | Returns the number of elements in the collection.                                                      | weblement\collections\CollectionObject |
-| getElements()               | Returns an array with all the elements of the collection.                                              | weblement\collections\CollectionObject |
-| getIsEmpty()                | Returns whether the collection is empty.                                                               | weblement\collections\CollectionObject |
-| getIsIndexed()              | Returns whether the collection is indexed.                                                             | weblement\collections\CollectionObject |
-| getIterator()               | Returns an iterator for traversing the elements in the collection.                                     | weblement\collections\CollectionObject |
+| [contains()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#contains)                  | Checks whether the collection contains an element or multiple elements.                                | weblement\collections\CollectionObject |
+| [count()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#count)                     | Returns the number of elements in the collection.                                                      | weblement\collections\CollectionObject |
+| [getCount()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#getcount)                  | Returns the number of elements in the collection.                                                      | weblement\collections\CollectionObject |
+| [getElements()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#getelements)               | Returns an array with all the elements of the collection.                                              | weblement\collections\CollectionObject |
+| [getIsEmpty()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#getisempty)                | Returns whether the collection is empty.                                                               | weblement\collections\CollectionObject |
+| [getIsIndexed()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#getisindexed)              | Returns whether the collection is indexed.                                                             | weblement\collections\CollectionObject |
+| [getIterator()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#getiterator)               | Returns an iterator for traversing the elements in the collection.                                     | weblement\collections\CollectionObject |
 | hasMethod()                 | Returns a value indicating whether a method is defined.                                                | weblement\collections\Object           |
 | hasProperty()               | Returns a value indicating whether a property is defined.                                              | weblement\collections\Object           |
 | init()                      | Initialize the collection.                                                                             | weblement\collections\Object           |
 | [intersect()](#intersect)   | Checks and returns elements which are present in both the collection and a specified group of elements | weblement\collections\Set              |
-| remove()                    | Remove an element or multiple elements from the collection.                                            | weblement\collections\CollectionObject |
-| toArray()                   | Returns an array with all the elements of the collection.                                              | weblement\collections\CollectionObject |
+| [remove()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#remove)                    | Remove an element or multiple elements from the collection.                                            | weblement\collections\CollectionObject |
+| [toArray()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#toarray)                   | Returns an array with all the elements of the collection.                                              | weblement\collections\CollectionObject |
 | [union()](#union)           | Merge the collection with a set of elements.                                                           | weblement\collections\Set              |
 
 
@@ -92,7 +92,7 @@ public function add($elements)
 
 |            |       |                                                                                                         |
 |------------|-------|---------------------------------------------------------------------------------------------------------|
-| $elements  | mixed | The elements to be added to the collection. See [[CollectionObject::add()]] for detailed documentation. |
+| $elements  | mixed | The elements to be added to the collection. See [[[CollectionObject::add()](https://github.com/weblement/collections/blob/master/docs/CollectionOject.md#add)]] for detailed documentation. |
 | **return** | void  |                                                                                                         |
 ___
 
