@@ -36,9 +36,9 @@ The package requires PHP 5.4+ and follows the FIG standards PSR-1, PSR-2 and PSR
 Current collections implemented are:
  - ArrayList
  - Map
- - Queue
+ - [Queue](https://github.com/weblement/collections/blob/master/docs/Queue.md)
  - [Set](https://github.com/weblement/collections/blob/master/docs/Set.md)
- - Stack
+ - [Stack](https://github.com/weblement/collections/blob/master/docs/Stack.md)
  
 
 ## Contributing
