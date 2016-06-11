@@ -12,6 +12,16 @@ The CollectionObject is an object that will represent a [Collection](https://git
 | **Implemented By** | weblement\collections\ArrayList, weblement\collections\Map, weblement\collections\Queue, [weblement\collections\Set](https://github.com/weblement/collections/blob/master/docs/Set.md), weblement\collections\Stack |
 | **Source Code**    | https://github.com/weblement/collections/blob/master/src/CollectionObject.php                                                                                                                                       |
 
+#### Public Properties
+
+| Property  | Type          | Description                                                        | Defined By                             |
+|-----------|---------------|--------------------------------------------------------------------|----------------------------------------|
+| count     | integer       | The number of elements in the collection.                          | weblement\collections\CollectionObject |
+| elements  | array         | The elements that belong to the collection.                        | weblement\collections\CollectionObject |
+| isEmpty   | boolean       | Whether this collection is empty.                                  | weblement\collections\CollectionObject |
+| isIndexed | boolean       | Whether the collection is indexed and index of an element matters. | weblement\collections\CollectionObject |
+| itereator | ArrayIterator | An iterator for traversing the cookies in the collection.          | weblement\collections\CollectionObject |
+
 
 #### Public Methods
 
